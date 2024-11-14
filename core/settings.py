@@ -26,6 +26,7 @@ APPS = [
 INSTALLED_PACKAGES = [
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg'
 ]
 
 INSTALLED_APPS = [
