@@ -6,5 +6,5 @@ from authentication.views import UserLoginView, UserLogoutView, UserRegisteratio
 urlpatterns = [
     path('users/create', UserRegisterationView.as_view(), name='user-register'),
     path('users/login', UserLoginView.as_view(), name='user-login'),
-    path('users/logout', UserLogoutView.as_view(), name='user-login'),
+    path('users/logout', UserLogoutView.as_view(), name='user-logout'),
 ]
