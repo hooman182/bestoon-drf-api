@@ -1,4 +1,6 @@
+from datetime import timedelta
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +22,15 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 APPS = [
     'users.apps.UsersConfig',
-    'authentication.apps.AuthenticationConfig'
+    'authentication.apps.AuthenticationConfig',
+    'expense.apps.ExpenseConfig',
 ]
 
 INSTALLED_PACKAGES = [
     'rest_framework',
-    'rest_framework.authtoken',
-    'drf_yasg'
+    'djoser',
+
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = [
@@ -124,5 +128,30 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.TokenAuthentication']
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+JWT_SECRET = config('JWT_SECRET')
+JWT_AUDIENCE = config('JWT_AUDIENCE')
+JWT_ISSUER = config('JWT_ISSUER')
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": JWT_SECRET,
+    "AUDIENCE": JWT_AUDIENCE,
+    "ISSUER": JWT_ISSUER,
+    "JSON_ENCODER": None,
+
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "sub",
 }

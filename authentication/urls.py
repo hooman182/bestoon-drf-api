@@ -1,10 +1,7 @@
-from django.urls import path
-
-from authentication.views import UserLoginView, UserLogoutView, UserRegisterationView
+from django.urls import include, path
 
 
 urlpatterns = [
-    path('users/create', UserRegisterationView.as_view(), name='user-register'),
-    path('users/login', UserLoginView.as_view(), name='user-login'),
-    path('users/logout', UserLogoutView.as_view(), name='user-logout'),
+    path('', include('djoser.urls')),
+    path('', include("djoser.urls.jwt")),
 ]
