@@ -28,6 +28,7 @@ APPS = [
 
 INSTALLED_PACKAGES = [
     'rest_framework',
+    'rest_framework_simplejwt',
     'djoser',
 
     'drf_yasg',
@@ -141,17 +142,24 @@ JWT_AUDIENCE = config('JWT_AUDIENCE')
 JWT_ISSUER = config('JWT_ISSUER')
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': True,
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": False,
 
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": JWT_SECRET,
-    "AUDIENCE": JWT_AUDIENCE,
-    "ISSUER": JWT_ISSUER,
+    "SIGNING_KEY": 'hooman',
     "JSON_ENCODER": None,
 
     "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "id",
-    "USER_ID_CLAIM": "sub",
+    "USER_ID_CLAIM": "user_id",
+}
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'authentication.serializers.UserRegistrationSerializer'
+    }
 }

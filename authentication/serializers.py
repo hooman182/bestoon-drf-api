@@ -3,4 +3,4 @@ from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSeria
 
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     class Meta(BaseUserRegistrationSerializer.Meta):
-        fields = BaseUserRegistrationSerializer.Meta.fields + ("role",)
+        fields = BaseUserRegistrationSerializer.Meta.fields
