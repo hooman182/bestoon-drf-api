@@ -31,7 +31,7 @@ INSTALLED_PACKAGES = [
     'rest_framework_simplejwt',
     'djoser',
 
-    'drf_yasg',
+    'drf_spectacular',
 ]
 
 INSTALLED_APPS = [
@@ -135,6 +135,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 JWT_SECRET = config('JWT_SECRET')
@@ -149,7 +150,9 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": False,
 
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": 'hooman',
+    "SIGNING_KEY": JWT_SECRET,
+    "JWT_AUDIENCE": JWT_AUDIENCE,
+    "JWT_ISSUER" : JWT_ISSUER,
     "JSON_ENCODER": None,
 
     "AUTH_HEADER_TYPES": ("Bearer",),
@@ -162,4 +165,11 @@ DJOSER = {
     'SERIALIZERS': {
         'user_create': 'authentication.serializers.UserRegistrationSerializer'
     }
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Expense Tracker App API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
