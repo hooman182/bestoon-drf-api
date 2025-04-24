@@ -14,7 +14,8 @@ class CollectionSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Collection
-        fields = ('title', 'description', 'currency')
+        fields = ('title', 'description', 'currency', 'user')
+        read_only_fields = ('user',)
         
 
 class CategorySerializer(serializers.ModelSerializer):

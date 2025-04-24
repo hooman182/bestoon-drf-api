@@ -16,8 +16,8 @@ class Category(models.Model):
 class Collection(models.Model):
 
     class Currency(models.TextChoices):
-        IRR = 'Rial', 'ریال'
-        TOMAN = 'Toman', 'تومان'
+        IRR = 'IRR', 'ریال'
+        TOMAN = 'IRT', 'تومان'
         DOLLAR = 'USD', 'دلار'
 
     user = models.ForeignKey(

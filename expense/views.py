@@ -41,12 +41,16 @@ class ExpenseViewSet(viewsets.ViewSet):
 class CollectionView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
+    
     queryset = Collection.objects.all()
     serializer_class = CollectionSerializer
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
-  
+    
+    def perform_create(self, serializer):
+        return serializer.save(user=self.request.user)
+
     
 class CategoryViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
