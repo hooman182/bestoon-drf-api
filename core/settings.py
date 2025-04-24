@@ -1,13 +1,13 @@
 from datetime import timedelta
 from pathlib import Path
-from decouple import config
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'test')
 
-DEBUG = config('DEBUG')
+DEBUG = os.getenv('DEBUG', True)
 
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -134,9 +134,9 @@ REST_FRAMEWORK = {
 }
 
 # JWT Auth variable's
-JWT_SECRET = config('JWT_SECRET')
-JWT_AUDIENCE = config('JWT_AUDIENCE')
-JWT_ISSUER = config('JWT_ISSUER')
+JWT_SECRET = os.getenv('JWT_SECRET')
+JWT_AUDIENCE = os.getenv('JWT_AUDIENCE')
+JWT_ISSUER = os.getenv('JWT_ISSUER')
 
 # JWT Auth config's
 SIMPLE_JWT = {
