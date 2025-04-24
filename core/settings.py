@@ -1,6 +1,6 @@
 from datetime import timedelta
 from pathlib import Path
-import os 
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,12 +9,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'test')
 
 DEBUG = os.getenv('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(' ')
 AUTH_USER_MODEL = 'users.CustomUser'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Client app URL
-]
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'localhost').split(' ')
 
 # Project App's
 APPS = [
@@ -33,7 +31,7 @@ INSTALLED_PACKAGES = [
     'corsheaders'
 ]
 
-#Application definition
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     *APPS,
     *INSTALLED_PACKAGES,
 ]
@@ -53,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     'corsheaders.middleware.CorsMiddleware'
 ]
 
@@ -77,12 +76,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.{}'.format(os.getenv('DATABASE_ENGINE', 'sqlite3')),
+        'NAME': os.getenv('DATABASE_NAME', 'bestoon'),
+        'USER': os.getenv('DATABASE_USERNAME', 'django'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'password'),
+        'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
+        'PORT': os.getenv('DATABASE_PORT', 5432),
     }
 }
 
@@ -149,7 +151,7 @@ SIMPLE_JWT = {
     "ALGORITHM": "HS256",
     "SIGNING_KEY": JWT_SECRET,
     "JWT_AUDIENCE": JWT_AUDIENCE,
-    "JWT_ISSUER" : JWT_ISSUER,
+    "JWT_ISSUER": JWT_ISSUER,
     "JSON_ENCODER": None,
 
     "AUTH_HEADER_TYPES": ("Bearer",),
@@ -167,8 +169,8 @@ DJOSER = {
 
 # API Swagger Doc
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Expense Tracker App API',
-    'DESCRIPTION': 'Your project description',
+    'TITLE': 'Bestoon API',
+    'DESCRIPTION': 'documentation of bestoons api',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
