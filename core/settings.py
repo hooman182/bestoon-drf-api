@@ -12,7 +12,7 @@ DEBUG = os.getenv('DEBUG', True)
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(' ')
 AUTH_USER_MODEL = 'users.CustomUser'
 
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'localhost').split(' ')
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(' ')
 
 # Project App's
 APPS = [
