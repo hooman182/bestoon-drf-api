@@ -1,6 +1,7 @@
 from datetime import timedelta
 from pathlib import Path
 import os
+from corsheaders.defaults import default_headers, default_methods
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +13,18 @@ DEBUG = os.getenv('DEBUG', True)
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(' ')
 AUTH_USER_MODEL = 'users.CustomUser'
 
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(' ')
+CORS_ALLOWED_ORIGINS = os.getenv(
+    'CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(' ')
+
+CORS_ALLOW_METHODS = list(default_methods) + []
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'accept-encoding',
+    'dnt',
+    'origin',
+    "Authorization",
+    "X-Custom-Header",
+]
 
 # Project App's
 APPS = [
