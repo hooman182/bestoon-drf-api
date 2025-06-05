@@ -15,4 +15,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
     path('api/expense/', include('expense.urls')),
+    path('api/collection/', include('collection.urls')),
 ] + docpatterns

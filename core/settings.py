@@ -13,16 +13,12 @@ DEBUG = os.getenv('DEBUG', True)
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1').split(' ')
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# CORS_ALLOWED_ORIGINS = os.getenv(
-#     'CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(' ')
+CORS_ALLOWED_ORIGINS = os.getenv(
+    'CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(' ')
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
-]
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000'
+# ]
 
 CORS_ALLOW_METHODS = list(default_methods) + []
 
@@ -39,6 +35,7 @@ APPS = [
     'users.apps.UsersConfig',
     'authentication.apps.AuthenticationConfig',
     'expense.apps.ExpenseConfig',
+    'collection.apps.CollectionConfig',
 ]
 
 # 3rd Party Packages

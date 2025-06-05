@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from expense.models import Category, Collection, Expense
+from expense.models import Category, Expense
 
 
 class ExpenseSerializer(serializers.ModelSerializer):
@@ -10,14 +10,6 @@ class ExpenseSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
         
-class CollectionSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Collection
-        fields = ('title', 'description', 'currency', 'user')
-        read_only_fields = ('user',)
-        
-
 class CategorySerializer(serializers.ModelSerializer):
     
     name = serializers.CharField(max_length=200)
