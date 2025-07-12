@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.urls import include, path
-from rest_framework import permissions
-import rest_framework
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 
@@ -16,4 +14,5 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/expense/', include('expense.urls')),
     path('api/collection/', include('collection.urls')),
+    path('api/categories/', include('categories.urls')),
 ] + docpatterns
