@@ -3,9 +3,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from expense import serializers
-from expense.models import Category, Collection, Expense
+from expense.models import Category, Expense
 from expense.serializers import CategorySerializer, ExpenseSerializer
+#------------------------------------------------------------------------
 
 
 class ExpenseViewSet(viewsets.ViewSet):

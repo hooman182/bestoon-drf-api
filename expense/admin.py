@@ -1,15 +1,11 @@
 from django.contrib import admin
-from expense.models import Category, Collection, Expense
+from expense.models import Expense
+
+# ------------------------------------------------------------------------
 
 
 @admin.register(Expense)
 class ExpenseAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Collection)
-class CollectionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["title", "amount", "collection"]
+    list_filter = ["collection", "amount"]
+    search_fields = ["title"]
