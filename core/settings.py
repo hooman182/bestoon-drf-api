@@ -32,8 +32,8 @@ APPS = [
     "users.apps.UsersConfig",
     "authentication.apps.AuthenticationConfig",
     "expense.apps.ExpenseConfig",
-    "collection.apps.CollectionConfig",
     "incomes.apps.IncomesConfig",
+    "collection.apps.CollectionConfig",
     "categories.apps.CategoriesConfig",
 ]
 
