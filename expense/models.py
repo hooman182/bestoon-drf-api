@@ -8,7 +8,6 @@ User = get_user_model()
 
 
 class Expense(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="users")
     collection = models.ForeignKey(
         Collection, on_delete=models.CASCADE, related_name="expense"
     )
