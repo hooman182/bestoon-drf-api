@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
-from expense.models import Category, Expense
-from expense.serializers import CategorySerializer, ExpenseSerializer
+from expense.models import Expense
+from expense.serializers import ExpenseSerializer
 #------------------------------------------------------------------------
 
 
@@ -39,13 +39,3 @@ class ExpenseViewSet(viewsets.ViewSet):
         expense = Expense.objects.get(pk=pk)
         expense.delete()
         return Response({'msg': 'record deleted'}, status=status.HTTP_200_OK)
-    
-class CategoryViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [JWTAuthentication]    
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-    def get_queryset(self):
-        return self.queryset.filter(user=self.request.user)
-  

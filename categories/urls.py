@@ -1,8 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from expense.views import CategoryViewSet
+from .views import CategoryViewSets
 
 
 router = DefaultRouter()
-router.register('categories', CategoryViewSet, 'categories')
+router.register('categories', CategoryViewSets, 'categories')
 
 urlpatterns = router.urls
