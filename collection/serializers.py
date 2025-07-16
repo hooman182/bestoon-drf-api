@@ -1,10 +1,9 @@
-from email.policy import default
 from rest_framework import serializers
-
-
-class CollectionSerializer(serializers.Serializer):
-    title = serializers.CharField(max_length=120)
-    description = serializers.CharField(max_length=120)
-    currency = serializers.ChoiceField(
-        choices=[("IRT", "تومان"), ("IRR", "ریال"), ("USD", "دلار")], default="IRT"
-    )
+from .models import Collection
+#-----------------------------------------
+   
+class CollectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Collection 
+        fields = ('title', 'description', 'currency', 'id')
+        read_only_fields = ('user',)

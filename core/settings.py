@@ -6,7 +6,7 @@ from corsheaders.defaults import default_headers, default_methods
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv("SECRET_KEY", "test")
+SECRET_KEY = os.getenv("SECRET_KEY", "Test")
 
 DEBUG = os.getenv("DEBUG", True)
 
@@ -149,9 +149,9 @@ REST_FRAMEWORK = {
 }
 
 # JWT Auth variable's
-JWT_SECRET = os.getenv("JWT_SECRET")
-JWT_AUDIENCE = os.getenv("JWT_AUDIENCE")
-JWT_ISSUER = os.getenv("JWT_ISSUER")
+JWT_SECRET = os.getenv("JWT_SECRET", "Test")
+JWT_AUDIENCE = os.getenv("JWT_AUDIENCE", "Test")
+JWT_ISSUER = os.getenv("JWT_ISSUER", "Test")
 
 # JWT Auth config's
 SIMPLE_JWT = {
