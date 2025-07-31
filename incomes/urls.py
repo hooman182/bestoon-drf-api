@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import IncomeListViews, IncomeCreateView
+from .views import IncomeListCreateView, IncomeRetrieveView
 
 
 urlpatterns = [
-    path('', IncomeListViews.as_view(), name='incomes-list'),
-    path('', IncomeCreateView.as_view(), name='incomes-create'),
+    path('', IncomeListCreateView.as_view(), name='incomes-list'),
+    path('', IncomeRetrieveView.as_view(), name='incomes-create'),
 ]

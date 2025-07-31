@@ -15,4 +15,5 @@ urlpatterns = [
     path('api/expense/', include('expense.urls')),
     path('api/collection/', include('collection.urls')),
     path('api/categories/', include('categories.urls')),
+    path('api/incomes/', include('incomes.urls')),
 ] + docpatterns
