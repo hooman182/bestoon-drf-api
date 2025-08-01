@@ -1,12 +1,13 @@
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets, permissions
 
 from collection.models import Collection
 from collection.serializers import CollectionSerializer
+from .permissions import OwnerPermission
 #---------------------------------------------------------------
 
+
 class CollectionViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, OwnerPermission]
     serializer_class = CollectionSerializer
 
     def get_queryset(self):
