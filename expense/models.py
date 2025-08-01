@@ -3,16 +3,22 @@ from django.contrib.auth import get_user_model
 
 from collection.models import Collection
 from categories.models import Category
-#--------------------------------------------------------------
+
+# --------------------------------------------------------------
 
 User = get_user_model()
 
+
 class Expense(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="expense",
+    )
     collection = models.ForeignKey(
         Collection,
         on_delete=models.CASCADE,
         related_name="expense",
-        verbose_name="what is the user right now",
     )
     title = models.CharField(max_length=200)
     description = models.TextField()

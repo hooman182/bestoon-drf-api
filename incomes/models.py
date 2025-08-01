@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Income(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="category")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="income")
     collection = models.ForeignKey(
         "collection.Collection", on_delete=models.CASCADE, related_name="income"
     )

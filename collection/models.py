@@ -11,7 +11,7 @@ class Collection(models.Model):
         DOLLAR = "USD", "دلار"
 
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="expense"
+        User, on_delete=models.CASCADE, related_name="collection"
     )
     title = models.CharField(max_length=200)
     description = models.TextField()
