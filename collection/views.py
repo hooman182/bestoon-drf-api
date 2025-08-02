@@ -1,8 +1,10 @@
-from rest_framework import viewsets, permissions
+from rest_framework import permissions, viewsets
 
 from collection.models import Collection
 from collection.serializers import CollectionSerializer
+
 from .permissions import OwnerPermission
+
 #---------------------------------------------------------------
 
 

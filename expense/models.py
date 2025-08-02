@@ -1,8 +1,8 @@
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
 
-from collection.models import Collection
 from categories.models import Category
+from collection.models import Collection
 
 # --------------------------------------------------------------
 
