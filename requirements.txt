@@ -13,6 +13,7 @@ djoser==2.3.1
 drf-spectacular==0.28.0
 idna==3.10
 inflection==0.5.1
+isort==6.0.1
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 oauthlib==3.2.2
