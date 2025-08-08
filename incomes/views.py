@@ -1,5 +1,6 @@
-from rest_framework import generics, viewsets
+from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
 
 from collection.models import Collection
 
@@ -26,7 +27,6 @@ class IncomeRetrieveView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Income.objects.all()
     serializer_class = IncomesSerilizer
     permission_classes = [IsAuthenticated]
-    lookup_field = "pk"
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
