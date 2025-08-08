@@ -176,7 +176,8 @@ SIMPLE_JWT = {
 DJOSER = {
     "SERIALIZERS": {
         "user_create": "authentication.serializers.UserRegistrationSerializer"
-    }
+    },
+    "UPDATE_LAST_LOGIN": True,
 }
 
 # API Swagger Doc
@@ -186,3 +187,7 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+SITE_ID = 1
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
