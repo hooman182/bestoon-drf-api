@@ -173,8 +173,14 @@ SIMPLE_JWT = {
 
 # Djoser package config's
 DJOSER = {
+    "LOGIN_FIELD": "email",
+    "SEND_ACTIVATION_EMAIL": True,
+    "SEND_CONFIRMATION_EMAIL": True,
+    "ACTIVATION_URL": "api/auth/activate/{uid}/{token}",
     "SERIALIZERS": {
-        "user_create": "authentication.serializers.UserRegistrationSerializer"
+        "user_create": "authentication.serializers.UserRegistrationSerializer",
+        # "user": "userauth.serializers.UserCreateSerializer",
+        "activation": "djoser.email.ActivationEmail",
     },
     "UPDATE_LAST_LOGIN": True,
 }
@@ -190,3 +196,8 @@ SPECTACULAR_SETTINGS = {
 SITE_ID = 1
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# EMAIL_HOST = config("EMAIL_HOST ")
+# EMAIL_PORT = config("EMAIL_PORT ")
+# EMAIL_HOST_USER = config("EMAIL_HOST_USER ")
+# EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD ")
